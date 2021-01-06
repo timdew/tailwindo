@@ -27,8 +27,6 @@ class Converter
         if (!empty($content)) {
             $this->setContent($content);
         }
-
-        return $this;
     }
 
     public function setContent(string $content): self
@@ -192,7 +190,7 @@ class Converter
             $replace = $callableReplace();
         }
 
-        $regexStart = !$this->isCssClassesOnly ? '(?<start>class\s*=\s*(?<quotation>["\'])((?!\k<quotation>).)*)' : '(?<start>\s*)';
+        $regexStart = !$this->isCssClassesOnly ? '(?<start>class(?:Name)?\s*=\s*(?<quotation>["\'])((?!\k<quotation>).)*)' : '(?<start>\s*)';
         $regexEnd = !$this->isCssClassesOnly ? '(?<end>((?!\k<quotation>).)*\k<quotation>)' : '(?<end>\s*)';
 
         $search = preg_quote($search);
