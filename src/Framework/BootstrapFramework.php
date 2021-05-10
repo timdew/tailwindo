@@ -325,6 +325,10 @@ class BootstrapFramework implements Framework
                 $items['flex'.(empty($btMedia) ? '' : '-').$btMedia.'-'.$key] = (empty($twMedia) ? '' : $twMedia.':').'flex-'.str_replace('column', 'col', $key);
             }
 
+            foreach (['grow-0', 'grow-1', 'shrink-0', 'shrink-1'] as $key) {
+                $items['flex'.(empty($btMedia) ? '' : '-').$btMedia.'-'.$key] = (empty($twMedia) ? '' : $twMedia.':').'flex-'.str_replace('-1', '', $key);
+            }
+
             foreach (['start', 'end', 'center', 'between', 'around'] as $key) {
                 $items['justify-content'.(empty($btMedia) ? '' : '-').$btMedia.'-'.$key] = (empty($twMedia) ? '' : $twMedia.':').'justify-'.$key;
             }
@@ -580,7 +584,7 @@ class BootstrapFramework implements Framework
         $colors = [
             'primary'   => 'bg-blue-600 text-white hover:bg-blue-600',
             'secondary' => 'bg-gray-600 text-white hover:bg-gray-700',
-            'success'   => 'bg-green-500 text-white hover:green-600',
+            'success'   => 'bg-green-500 text-white hover:bg-green-600',
             'danger'    => 'bg-red-600 text-white hover:bg-red-700',
             'warning'   => 'bg-orange-400 text-black hover:bg-orange-500',
             'info'      => 'bg-teal-500 text-white hover:bg-teal-600',
